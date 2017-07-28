@@ -13,7 +13,6 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="https://raw.githubusercontent.com/Prazma/hubsack/master/js/query.js"></script>
 		<script type="text/javascript" src="https://raw.githubusercontent.com/Prazma/hubsack/master/js/auto.js"></script>
-		<script type="text/javascript" src="js/currency-autocomplete.js"></script>
 		<script src="https://raw.githubusercontent.com/lazd/iNoBounce/master/inobounce.js"></script>
 		<style>
 			html {
@@ -188,24 +187,48 @@
 							</div>
 							<div id="etie" style="display: none;">
 								<div id="content">
-									<div id="searchfield">
-										<input type="text" placeholder="イベントを入力" name="currency" class="form-control" id="usr" autocomplete="off"><button class="btn btn-info" onclick="listformula()" style="width: 100%; margin-top: 5px;">決定</button>
+									<div id="sodium">	
+										<div id="searchfield">
+											<input type="text" placeholder="イベントを入力" name="currency" class="form-control" id="usr" autocomplete="off"><button class="btn btn-info" onclick="listformula()" style="width: 100%; margin-top: 5px;">決定</button>
+										</div>
+										<hr>
+										<table class="table table-striped etab">
+											<thead>
+												<tr>
+													<th>アイテム</th><th>用意した</th><th>持っている</th>
+												</tr>
+											</thead>
+											<tbody id="tutitmsconted">
+												<tr id="tutpref">
+													<td>イベントを入力<br>してください</td><td></td><td></td><td></td>
+												</tr>
+											</tbody>
+										</table>
 									</div>
 								</div>
-								<hr>
-								<table class="table table-striped etab">
-									<thead>
-										<tr>
-											<th>用意した</th><th>持っている</th><th>アイテム名</th><th></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr id="tutpref">
-											<td>イベントを入力してください</td><td></td><td></td><td></td>
-										</tr>
-									</tbody>
-								</table>
-								<button class="selebtn" style="width: 100%;">アイテムを追加する</button>
+								<div style="text-align: center;">
+									<div id="carbonate" style="display: none">
+										<input type="text" id="newitmscont" placeholder="アイテム名を入力" name="currency" class="form-control" id="usr" autocomplete="off" width="80%"><br>
+									</div>
+									<button class="selebtn" style="width: 100%;" onclick="newitms()">アイテムを追加する</button>
+								</div>
+								<script>
+									function newitms() {
+										var itmsstat = document.getElementById("itmsstat").innerHTML;
+										if(itmsstat == "0") {
+											document.getElementById("sodium").style.display = "none";
+											document.getElementById("carbonate").style.display = "block";
+											document.getElementById("itmsstat").innerHTML = "1";
+										} else {
+											document.getElementById("sodium").style.display = "block";
+											var cont = document.getElementById("newitmscont").value;
+											document.getElementById("tutitmsconted").innerHTML += '<th><input type="checkbox"></th><th><input type="checkbox"></th><th>'+ cont +'</th>';
+											document.getElementById("tutpref").style.display = "none";
+											document.getElementById("carbonate").style.display = "none";
+											document.getElementById("itmsstat").innerHTML = "0";
+										}
+									}
+								</script>
 								<hr><button class="btn btn-default" onclick="custbck()" style="width: 100%">戻る</button>
 							</div>
 							<div class="autocomplete-suggestions" style="position: absolute; width: 600px; top: 245px; left: 75px; max-height: 300px; z-index: 9999; display: none; z-index: 1000;"></div>
@@ -254,6 +277,7 @@
 		</div>
 		<div style="display: none">
 			<span id="midstat">0</span>
+			<span id="itmsstat">0</span>
 		</div>
 		<script>
 			function init() {
@@ -347,7 +371,27 @@
 				document.getElementById("etie").style.display = "none";
 			}
 		</script>
+		<script>
+			$(function(){
+				var currencies = [
+					{ value: '学校', data: 'school' },
+					{ value: 'がっこう', data: 'school' },
+					{ value: '海水浴', data: 'ocean' },
+					{ value: 'かいすいよく', data: 'ocean' },
+					{ value: '登山', data: 'mountain' },
+					{ value: 'とざん', data: 'mountain' },
+					{ value: '散歩', data: 'walk' },
+					{ value: 'さんぽ', data: 'walk' },
+				];
+				$('#usr').autocomplete({
+					lookup: currencies,
+					onSelect: function (suggestion) {
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
+
 
 
