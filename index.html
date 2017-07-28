@@ -18,6 +18,9 @@
 			body {
 				background: #ffffff;
 			}
+			button {
+				outline: none;
+			}
 			#mainport {
 				text-align: center;
 				height: 100vh;
@@ -88,7 +91,6 @@
 				transition: 0.5s;
 				-webkit-transition: 0.5s;
 			}
-
 			.speech-bubble:after {
 				content: '';
 				position: absolute;
@@ -102,6 +104,20 @@
 				margin-left: -25px;
 				margin-top: -25px;
 			}
+			.selebtn {
+				border: solid;
+				font-size: 16px;
+				border-width: 2px;
+				background: transparent;
+				color: #46b8da;
+				padding: 5px;
+				border-radius: 6px;
+				width: 30%;
+				margin-bottom: 10px;
+				margin-right: 3px;
+				margin-left: 3px;
+				outline: none;
+			}
 		</style>
 	</head>
 	<body onload="init()">
@@ -114,9 +130,57 @@
 			</div>
 			<div id="mainmen">
 				<div id="menwrap">
-					<button class="columbtn">リスト</button>
+					<button class="columbtn" id="listbton" type="button" data-toggle="modal" data-target="#listmodal">リスト</button>
 					<button class="columbtn">アイテム</button>
 					<button class="columbtn">カレンダー</button>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="listmodal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">リスト</h4>
+					</div>
+					<div class="modal-body">
+						<div id="selelist">
+							<div id="seletie">
+								<div id="bodslist">
+									<span>リストの種類を選択してください</span><br><br>
+									<button class="selebtn" style="width: 100%;">今日のリスト</button><br><br>
+									<button class="btn btn-info" style="width: 100%;" onclick="newlistabhw()">新しいリスト</button><br><br>
+								</div>
+							</div>
+							<div id="etie" style="display: none;">
+								<div id="content">
+									<div id="searchfield">
+										<input type="text" placeholder="イベントを入力" name="currency" class="form-control" id="usr" autocomplete="off"><button class="btn btn-info" onclick="listformula()" style="width: 100%; margin-top: 5px;">決定</button>
+									</div>
+								</div>
+								<hr>
+								<table class="table table-striped etab">
+									<thead>
+										<tr>
+											<th>用意した</th><th>持っている</th><th>アイテム名</th><th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr id="tutpref">
+											<td>イベントを入力してください</td><td></td><td></td><td></td>
+										</tr>
+									</tbody>
+								</table>
+								<button class="selebtn" style="width: 100%;">アイテムを追加する</button>
+								<hr><button class="btn btn-default" onclick="custbck()" style="width: 100%">戻る</button>
+							</div>
+							<div class="autocomplete-suggestions" style="position: absolute; width: 600px; top: 245px; left: 75px; max-height: 300px; z-index: 9999; display: none; z-index: 1000;"><div class="autocomplete-suggestion" data-index="0">Ar<strong>m</strong>enian dra<strong>m</strong></div><div class="autocomplete-suggestion" data-index="1">Azerbaijani <strong>m</strong>anat</div><div class="autocomplete-suggestion" data-index="2">Baha<strong>m</strong>ian dollar</div><div class="autocomplete-suggestion" data-index="3">Bhutanese ngultru<strong>m</strong></div><div class="autocomplete-suggestion" data-index="4">Bosnia-Herzegovina konvertibilna <strong>m</strong>arka</div><div class="autocomplete-suggestion" data-index="5">Ca<strong>m</strong>bodian riel</div><div class="autocomplete-suggestion" data-index="6">Cay<strong>m</strong>an Islands dollar</div><div class="autocomplete-suggestion" data-index="7">Chinese ren<strong>m</strong>inbi</div><div class="autocomplete-suggestion" data-index="8">Colo<strong>m</strong>bian peso</div><div class="autocomplete-suggestion" data-index="9">Co<strong>m</strong>orian franc</div><div class="autocomplete-suggestion" data-index="10">Do<strong>m</strong>inican peso</div><div class="autocomplete-suggestion" data-index="11">Ga<strong>m</strong>bian dalasi</div><div class="autocomplete-suggestion" data-index="12">Guate<strong>m</strong>alan quetzal</div><div class="autocomplete-suggestion" data-index="13">Honduran le<strong>m</strong>pira</div><div class="autocomplete-suggestion" data-index="14">Ja<strong>m</strong>aican dollar</div><div class="autocomplete-suggestion" data-index="15">Kyrgyzstani so<strong>m</strong></div><div class="autocomplete-suggestion" data-index="16"><strong>M</strong>acanese pataca</div><div class="autocomplete-suggestion" data-index="17"><strong>M</strong>acedonian denar</div><div class="autocomplete-suggestion" data-index="18"><strong>M</strong>alagasy ariary</div><div class="autocomplete-suggestion" data-index="19"><strong>M</strong>alawian kwacha</div><div class="autocomplete-suggestion" data-index="20"><strong>M</strong>alaysian ringgit</div><div class="autocomplete-suggestion" data-index="21"><strong>M</strong>aldivian rufiyaa</div><div class="autocomplete-suggestion" data-index="22"><strong>M</strong>auritanian ouguiya</div><div class="autocomplete-suggestion" data-index="23"><strong>M</strong>auritian rupee</div><div class="autocomplete-suggestion" data-index="24"><strong>M</strong>exican peso</div><div class="autocomplete-suggestion" data-index="25"><strong>M</strong>oldovan leu</div><div class="autocomplete-suggestion" data-index="26"><strong>M</strong>ongolian tugrik</div><div class="autocomplete-suggestion" data-index="27"><strong>M</strong>oroccan dirha<strong>m</strong></div><div class="autocomplete-suggestion" data-index="28"><strong>M</strong>oza<strong>m</strong>bican <strong>m</strong>etical</div><div class="autocomplete-suggestion" data-index="29"><strong>M</strong>yan<strong>m</strong>a kyat</div><div class="autocomplete-suggestion" data-index="30">Na<strong>m</strong>ibian dollar</div><div class="autocomplete-suggestion" data-index="31">O<strong>m</strong>ani rial</div><div class="autocomplete-suggestion" data-index="32">Pana<strong>m</strong>anian balboa</div><div class="autocomplete-suggestion" data-index="33">Ro<strong>m</strong>anian leu</div><div class="autocomplete-suggestion" data-index="34">Sa<strong>m</strong>oan tala</div><div class="autocomplete-suggestion" data-index="35">Sao To<strong>m</strong>e and Principe dobra</div><div class="autocomplete-suggestion" data-index="36">Solo<strong>m</strong>on Islands dollar</div><div class="autocomplete-suggestion" data-index="37">So<strong>m</strong>ali shilling</div><div class="autocomplete-suggestion" data-index="38">Surina<strong>m</strong>ese dollar</div><div class="autocomplete-suggestion" data-index="39">Tajikistani so<strong>m</strong>oni</div><div class="autocomplete-suggestion" data-index="40">Turk<strong>m</strong>en <strong>m</strong>anat</div><div class="autocomplete-suggestion" data-index="41">United Arab E<strong>m</strong>irates dirha<strong>m</strong></div><div class="autocomplete-suggestion" data-index="42">Uzbekistani so<strong>m</strong></div><div class="autocomplete-suggestion" data-index="43">Vietna<strong>m</strong>ese dong</div><div class="autocomplete-suggestion" data-index="44">Ye<strong>m</strong>eni rial</div><div class="autocomplete-suggestion" data-index="45">Za<strong>m</strong>bian kwacha</div><div class="autocomplete-suggestion" data-index="46">Zi<strong>m</strong>babwean dollar</div></div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<span id="modfoot"></span>
+						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -131,11 +195,12 @@
 			}
 			function minbt() {
 				var mids = document.getElementById("midstat").innerHTML;
+				document.getElementById("bubf").style.opacity = "0";
 				if( mids == "0") {
 					document.getElementById("middlebutton").style.borderWidth = "10px";
 					document.getElementById("middlebutton").style.borderRadius = "6px";
 					setTimeout( function () {
-						document.getElementById("middlebutton").innerHTML = "毎日リストをからにしよう！";
+						document.getElementById("middlebutton").innerHTML = "「今日のリスト」をからにしよう！";
 					}, 400)
 					document.getElementById("middlebutton").style.width = "90%";
 					document.getElementById("midstat").innerHTML = "1";
@@ -146,6 +211,69 @@
 					document.getElementById("middlebutton").style.width = "150px";
 					document.getElementById("midstat").innerHTML = "0";
 				}
+			}
+		</script>
+		<script>
+			function midinit() {
+				var stat = document.getElementById("midstat").innerHTML;
+				document.getElementById("ormint").style.display = "none";
+				document.getElementById("tut").style.opacity = "0";
+				document.getElementById("tut").innerHTML = "";
+				var tutstat = document.getElementById("tutstat").innerHTML;
+				if(tutstat == "strt") {
+					document.getElementById("tut").innerHTML = '<span style="font-size: 19px;"><strong>機能について</strong></span><br><br><span><strong>リスト</strong></span><br><br><article><strong>「リスト」</strong>では、<strong>「カレンダー」</strong>にて設定した<strong>イベント用の持ち物のリストを「今日のリスト」でみることができます。</strong><br>イベントをその場で設定して<strong>最低限の持ち物リストを素早くみる場合、「新しいリスト」で見る</strong>ことができます。</article><br><hr><br><span><strong>アイテム</strong></span><br><article><strong>「アイテム」</strong>では、新しく買った持ち物、イベントに追加したい持ち物の<strong>場所を管理（家にあるか外にあるか）、所属するイベントの変更と追加</strong>することができます。</article><hr><span><strong>カレンダー</strong></span><br><article><strong>「カレンダー」</strong>では、<strong>イベントを管理</strong>することができます。<strong>追加したイベントは、設定した日の「今日のリスト」にて持ち物が表示されます。</strong></article>';
+					document.getElementById("tut").style.opacity = "1";
+				}
+				if(stat == "hid") {
+					document.getElementById("midstat").innerHTML = "shou";
+					document.getElementById("selebtnport").style.opacity = "1";
+					document.getElementById("listbton").disabled = false;
+					document.getElementById("itembton").disabled = false;
+					document.getElementById("selebtn").disabled = false;
+				} else {
+					document.getElementById("midstat").innerHTML = "hid";
+					document.getElementById("selebtnport").style.opacity = "0";
+					document.getElementById("listbton").disabled = true;
+					document.getElementById("itembton").disabled = true;
+					document.getElementById("selebtn").disabled = true;
+				}
+			}
+			function shoutesta() {
+				document.getElementById("tut").style.opacity = "0";
+				document.getElementById("ormint").innerHTML = '<span>「リスト」をタップしてリストを表示しよう</span>';
+				document.getElementById("ormint").style.display = "block";
+				var stat = document.getElementById("midstat").innerHTML;
+				if(stat == "hid") {
+					document.getElementById("midstat").innerHTML = "shou";
+					document.getElementById("selebtnport").style.opacity = "1";
+					document.getElementById("listbton").disabled = false;
+					document.getElementById("itembton").disabled = false;
+					document.getElementById("selebtn").disabled = false;
+				} else {
+					document.getElementById("midstat").innerHTML = "hid";
+					document.getElementById("selebtnport").style.opacity = "0";
+					document.getElementById("listbton").disabled = true;
+					document.getElementById("itembton").disabled = true;
+					document.getElementById("selebtn").disabled = true;
+				}
+			}
+			function shouormint() {
+				document.getElementById("tut").style.opacity = "0";
+				document.getElementById("ormint").style.display = "block";
+				document.getElementById("tutstat").innerHTML = "strt";
+			}
+			function wozkit() {
+				document.getElementById("tut").style.opacity = "0";
+				document.getElementById("tut").innerHTML = "";
+				document.getElementById("ormint").style.display = "none";
+			}
+			function newlistabhw() {
+				document.getElementById("seletie").style.display = "none";
+				document.getElementById("etie").style.display = "block";
+			}
+			function custbck() {
+				document.getElementById("seletie").style.display = "block";
+				document.getElementById("etie").style.display = "none";
 			}
 		</script>
 	</body>
