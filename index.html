@@ -24,7 +24,7 @@
 				-webkit-appearance: none;
 				border: solid;
 				border-color: #0CA7DF;
-				margin-top: 40px;
+				margin-top: 30px;
 				border-width: 15px;
 				border-radius: 50%;
 				height: 150px;
@@ -36,7 +36,7 @@
 			}
 			#wrapmid {
 				position: fixed;
-				top: 0;
+				top: 10px;
 				width: 100%;
 			}
 			#mainmen {
@@ -55,7 +55,7 @@
 				border-top-color: #bfbfbf;
 			}
 			#menwrap {
-				width: 95%;
+				width: 90%;
 				margin-right: auto;
 				margin-left: auto;
 			}
@@ -83,8 +83,10 @@
 				if( mids == "0") {
 					document.getElementById("middlebutton").style.borderWidth = "10px";
 					document.getElementById("middlebutton").style.borderRadius = "6px";
-					document.getElementById("middlebutton").innerHTML = "毎日リストをからにしよう！";
-					document.getElementById("middlebutton").style.width = "95%";
+					setTimeout( function () {
+						document.getElementById("middlebutton").innerHTML = "毎日リストをからにしよう！";
+					}, 400)
+					document.getElementById("middlebutton").style.width = "90%";
 					document.getElementById("midstat").innerHTML = "1";
 				} else {
 					document.getElementById("middlebutton").style.borderWidth = "15px";
