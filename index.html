@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>NapSack</title>
+		<title></title>
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<link rel="apple-touch-icon" href="img/appicon.jpg">
 		<meta name="apple-mobile-web-app-title" content="NapSack">
@@ -15,6 +15,9 @@
 		<script type="text/javascript" src="https://raw.githubusercontent.com/Prazma/hubsack/master/js/auto.js"></script>
 		<script type="text/javascript" src="js/currency-autocomplete.js"></script>
 		<style>
+			body {
+				background: #ffffff;
+			}
 			#mainport {
 				text-align: center;
 				height: 100vh;
@@ -45,17 +48,27 @@
 				width: 100%;
 			}
 			.columbtn {
-				width: 100%;
+				width: 90%;
 				padding: 25px;
 				font-size: 25px;
 				background: #ffffff;
+				color: #252525;
 				border: none;
 				border-top: solid;
 				border-top-width: 1px;
 				border-top-color: #bfbfbf;
+				transition: 0.5s;
+				-webkit-transition: 0.5s;
+			}
+			.columbtn:hover {
+				width: 100%;
+				background: #0CA7DF;
+				color: #ffffff;
+				transition: 0.5s;
+				-webkit-transition: 0.5s;
 			}
 			#menwrap {
-				width: 90%;
+				width: 100%;
 				margin-right: auto;
 				margin-left: auto;
 			}
@@ -69,8 +82,8 @@
 			<div id="mainmen">
 				<div id="menwrap">
 					<button class="columbtn">リスト</button>
-					<button class="columbtn">リスト</button>
-					<button class="columbtn">リスト</button>
+					<button class="columbtn">アイテム</button>
+					<button class="columbtn">カレンダー</button>
 				</div>
 			</div>
 		</div>
