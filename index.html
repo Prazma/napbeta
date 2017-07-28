@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<link rel="apple-touch-icon" href="img/appicon.jpg">
+		<meta name="apple-mobile-web-app-title" content="NapSack">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="white">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://raw.githubusercontent.com/Prazma/napsack/master/css/post.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://raw.githubusercontent.com/Prazma/hubsack/master/js/query.js"></script>
+		<script type="text/javascript" src="https://raw.githubusercontent.com/Prazma/hubsack/master/js/auto.js"></script>
+		<script type="text/javascript" src="js/currency-autocomplete.js"></script>
+		<style>
+			#mainport {
+				text-align: center;
+				height: 100vh;
+			}
+			#middlebutton {
+				background: transparent;
+				-webkit-appearance: none;
+				border: solid;
+				border-color: #0CA7DF;
+				margin-top: 40px;
+				border-width: 15px;
+				border-radius: 50%;
+				height: 150px;
+				width: 150px;
+				outline: none;
+				font-size: 20px;
+				transition: 0.5s;
+				-webkit-transition: 0.5s;
+			}
+			#wrapmid {
+				position: fixed;
+				top: 0;
+				width: 100%;
+			}
+			#mainmen {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+			}
+			.columbtn {
+				width: 100%;
+				padding: 25px;
+				font-size: 25px;
+				background: #ffffff;
+				border: none;
+				border-top: solid;
+				border-top-width: 1px;
+				border-top-color: #bfbfbf;
+			}
+			#menwrap {
+				width: 95%;
+				margin-right: auto;
+				margin-left: auto;
+			}
+		</style>
+	</head>
+	<body onload="init()">
+		<div id="mainport">
+			<div id="wrapmid">
+				<button id="middlebutton" onclick="minbt()"></button>
+			</div>
+			<div id="mainmen">
+				<div id="menwrap">
+					<button class="columbtn">リスト</button>
+					<button class="columbtn">リスト</button>
+					<button class="columbtn">リスト</button>
+				</div>
+			</div>
+		</div>
+		<div style="display: none">
+			<span id="midstat">0</span>
+		</div>
+		<script>
+			function minbt() {
+				var mids = document.getElementById("midstat").innerHTML;
+				if( mids == "0") {
+					document.getElementById("middlebutton").style.borderWidth = "10px";
+					document.getElementById("middlebutton").style.borderRadius = "6px";
+					document.getElementById("middlebutton").innerHTML = "毎日リストをからにしよう！";
+					document.getElementById("middlebutton").style.width = "95%";
+					document.getElementById("midstat").innerHTML = "1";
+				} else {
+					document.getElementById("middlebutton").style.borderWidth = "15px";
+					document.getElementById("middlebutton").style.borderRadius = "50%";
+					document.getElementById("middlebutton").innerHTML = "";
+					document.getElementById("middlebutton").style.width = "150px";
+					document.getElementById("midstat").innerHTML = "0";
+				}
+			}
+		</script>
+	</body>
+</html>
