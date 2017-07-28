@@ -131,8 +131,8 @@
 			<div id="mainmen">
 				<div id="menwrap">
 					<button class="columbtn" id="listbton" type="button" data-toggle="modal" data-target="#listmodal">リスト</button>
-					<button class="columbtn">アイテム</button>
-					<button class="columbtn">カレンダー</button>
+					<button class="columbtn" id="listbton" type="button" data-toggle="modal" data-target="#itemmodal">アイテム</button>
+					<button class="columbtn" id="listbton" type="button" data-toggle="modal" data-target="#calenmodal">カレンダー</button>
 				</div>
 			</div>
 		</div>
@@ -184,6 +184,40 @@
 				</div>
 			</div>
 		</div>
+		<div class="modal fade" id="itemmodal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">アイテム</h4>
+					</div>
+					<div class="modal-body">
+						メンテナンス中...
+					</div>
+					<div class="modal-footer">
+						<span id="modfoot"></span>
+						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="calenmodal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">カレンダー</h4>
+					</div>
+					<div class="modal-body">
+						メンテナンス中...
+					</div>
+					<div class="modal-footer">
+						<span id="modfoot"></span>
+						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div style="display: none">
 			<span id="midstat">0</span>
 		</div>
@@ -208,6 +242,9 @@
 					document.getElementById("middlebutton").style.borderWidth = "15px";
 					document.getElementById("middlebutton").style.borderRadius = "50%";
 					document.getElementById("middlebutton").innerHTML = "";
+					setTimeout( function () {
+						document.getElementById("middlebutton").innerHTML = "";
+					}, 400)
 					document.getElementById("middlebutton").style.width = "150px";
 					document.getElementById("midstat").innerHTML = "0";
 				}
@@ -278,3 +315,4 @@
 		</script>
 	</body>
 </html>
+
