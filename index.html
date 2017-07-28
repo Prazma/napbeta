@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>NapSack</title>
+		<title></title>
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<link rel="apple-touch-icon" href="img/appicon.jpg">
 		<meta name="apple-mobile-web-app-title" content="NapSack">
@@ -17,6 +17,10 @@
 		<style>
 			body {
 				background: #ffffff;
+				background: #7474BF;  /* fallback for old browsers */
+				background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 			}
 			button {
 				outline: none;
@@ -29,7 +33,7 @@
 				background: transparent;
 				-webkit-appearance: none;
 				border: solid;
-				border-color: #0CA7DF;
+				border-color: #ffffff;
 				margin-top: 30px;
 				border-width: 15px;
 				border-radius: 50%;
@@ -54,11 +58,12 @@
 				width: 100%;
 			}
 			.columbtn {
-				width: 90%;
+				width: 100%;
 				padding: 20px;
 				font-size: 20px;
 				background: #ffffff;
 				color: #252525;
+				font-weight: bold;
 				border: none;
 				border-top: solid;
 				border-top-width: 1px;
@@ -68,8 +73,8 @@
 			}
 			.columbtn:hover {
 				width: 100%;
-				background: #0CA7DF;
-				color: #ffffff;
+				background: #bfbfbf;
+				color: #252525;
 				transition: 0.5s;
 				-webkit-transition: 0.5s;
 			}
@@ -120,6 +125,25 @@
 				margin-right: 3px;
 				margin-left: 3px;
 				outline: none;
+			}
+			#topbr {
+				background: #348AC7;
+				color: white;
+				border: none;
+				border-bottom: solid;
+				border-right: solid;
+				border-left: solid;
+				border-bottom-width: 1px;
+				border-right-width: 1px;
+				border-left-width: 1px;
+				font-family: sans-serif;
+				width: 50px;
+			}
+			#rapbr {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				text-align: center;
 			}
 		</style>
 	</head>
@@ -318,4 +342,3 @@
 		</script>
 	</body>
 </html>
-
