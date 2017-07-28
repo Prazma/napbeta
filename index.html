@@ -222,10 +222,13 @@
 										} else {
 											document.getElementById("sodium").style.display = "block";
 											var cont = document.getElementById("newitmscont").value;
-											document.getElementById("tutitmsconted").innerHTML += '<th><input type="checkbox"></th><th><input type="checkbox"></th><th>'+ cont +'</th>';
-											document.getElementById("tutpref").style.display = "none";
-											document.getElementById("carbonate").style.display = "none";
-											document.getElementById("itmsstat").innerHTML = "0";
+											if(cont.length < 1) {
+											} else {
+												document.getElementById("tutitmsconted").innerHTML += '<th><input type="checkbox"></th><th><input type="checkbox"></th><th>'+ cont +'</th>';
+												document.getElementById("tutpref").style.display = "none";
+											}
+												document.getElementById("carbonate").style.display = "none";
+												document.getElementById("itmsstat").innerHTML = "0";
 										}
 									}
 								</script>
