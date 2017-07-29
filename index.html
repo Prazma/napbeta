@@ -153,6 +153,12 @@
 				width: 100%;
 				text-align: center;
 			}
+			.etab {
+				border: solid;
+				border-width: 1px;
+				border-color: #bfbfbf;
+				margin-top: 10px;
+			}
 		</style>
 	</head>
 	<body onload="init()">
@@ -194,6 +200,9 @@
 											<div id="evenone">
 												<input type="text" placeholder="イベントを入力" name="currency" class="form-control" id="usr" autocomplete="off"><button class="btn btn-info" onclick="listformula()" style="width: 100%; margin-top: 5px;">決定</button>
 											</div>
+											<div id="eventwo" style="display: none;">
+												<button class="btn btn-warning">イベントを変更</button>
+											</div>
 											<script>
 												function listformula() {
 													document.getElementById("evenone").style.display = "none";
@@ -206,12 +215,12 @@
 											<table class="table table-striped etab">
 												<thead>
 													<tr>
-														<th>アイテム</th><th>用意した</th><th>持っている</th>
+														<th>用意した</th><th>持っている</th><th>アイテム名</th>
 													</tr>
 												</thead>
 												<tbody id="tutitmsconted">
 													<tr id="tutpref">
-														<td>イベントを入力<br>してください</td><td></td><td></td><td></td>
+														<td>イベントを入力<br>してください</td><td></td><td></td>
 													</tr>
 												</tbody>
 											</table>
@@ -219,7 +228,7 @@
 									</div>
 									<div style="text-align: center;">
 										<div id="carbonate" style="display: none">
-											<input type="text" id="newitmscont" placeholder="アイテム名を入力" name="currency" class="form-control" id="usr" autocomplete="off" width="80%"><br>
+											<input type="text" id="newitmscont" placeholder="アイテム名を入力" name="currency" class="form-control" autocomplete="off" width="80%"><br>
 											<button class="btn btn-danger" style="width: 100%;" onclick="bckitms()">取り消し</button><br><br>
 										</div>
 									<div id="dinone" style="display: none">	
@@ -241,6 +250,7 @@
 												document.getElementById("sodium").style.display = "block";
 												document.getElementById("takaone").style.display = "block";
 												var cont = document.getElementById("newitmscont").value;
+												document.getElementById("newitmscont").value = "";
 												if(cont.length < 1) {
 												} else {
 													document.getElementById("tutitmsconted").innerHTML += '<th><input type="checkbox"></th><th><input type="checkbox"></th><th>'+ cont +'</th>';
@@ -253,7 +263,8 @@
 										function bckitms() {
 											document.getElementById("sodium").style.display = "block";
 											document.getElementById("carbonate").style.display = "none";
-												document.getElementById("takaone").style.display = "block";
+											document.getElementById("takaone").style.display = "block";
+											document.getElementById("newitmscont").value = "";
 											document.getElementById("itmsstat").innerHTML = "0";
 										}
 									</script>
