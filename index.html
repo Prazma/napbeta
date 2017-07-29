@@ -57,6 +57,8 @@
 				position: fixed;
 				top: 10px;
 				width: 100%;
+				transition: 0.5s;
+				-webkit-transition: 0.5s;
 			}
 			#mainmen {
 				position: fixed;
@@ -65,7 +67,7 @@
 			}
 			.columbtn {
 				width: 100%;
-				height: 10vh;
+				padding: 20px;
 				font-size: 20px;
 				background: #ffffff;
 				color: #252525;
@@ -162,7 +164,7 @@
 				</div>
 			</div>
 			<div id="mainmen">
-				<div id="menwrap">
+				<div id="menwrap" style="opacity: 0; display: none;">
 					<button class="columbtn" id="listbton" type="button" data-toggle="modal" data-target="#listmodal">リスト</button>
 					<button class="columbtn" id="listbton" type="button" data-toggle="modal" data-target="#itemmodal">アイテム</button>
 					<button class="columbtn" id="listbton" type="button" data-toggle="modal" data-target="#calenmodal">カレンダー</button>
@@ -189,57 +191,82 @@
 								<div id="content">
 									<div id="sodium">	
 										<div id="searchfield">
-											<input type="text" placeholder="イベントを入力" name="currency" class="form-control" id="usr" autocomplete="off"><button class="btn btn-info" onclick="listformula()" style="width: 100%; margin-top: 5px;">決定</button>
+											<div id="evenone">
+												<input type="text" placeholder="イベントを入力" name="currency" class="form-control" id="usr" autocomplete="off"><button class="btn btn-info" onclick="listformula()" style="width: 100%; margin-top: 5px;">決定</button>
+											</div>
+											<script>
+												function listformula() {
+													document.getElementById("evenone").style.display = "none";
+													document.getElementById("beyonone").style.display = "inline";
+													document.getElementById("dinone").style.display = "inline";
+												}
+											</script>
 										</div>
-										<hr>
-										<table class="table table-striped etab">
-											<thead>
-												<tr>
-													<th>アイテム</th><th>用意した</th><th>持っている</th>
-												</tr>
-											</thead>
-											<tbody id="tutitmsconted">
-												<tr id="tutpref">
-													<td>イベントを入力<br>してください</td><td></td><td></td><td></td>
-												</tr>
-											</tbody>
-										</table>
+										<div id="beyonone" style="display: none">
+											<table class="table table-striped etab">
+												<thead>
+													<tr>
+														<th>アイテム</th><th>用意した</th><th>持っている</th>
+													</tr>
+												</thead>
+												<tbody id="tutitmsconted">
+													<tr id="tutpref">
+														<td>イベントを入力<br>してください</td><td></td><td></td><td></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
 									</div>
-								</div>
-								<div style="text-align: center;">
-									<div id="carbonate" style="display: none">
-										<input type="text" id="newitmscont" placeholder="アイテム名を入力" name="currency" class="form-control" id="usr" autocomplete="off" width="80%"><br>
+									<div style="text-align: center;">
+										<div id="carbonate" style="display: none">
+											<input type="text" id="newitmscont" placeholder="アイテム名を入力" name="currency" class="form-control" id="usr" autocomplete="off" width="80%"><br>
+											<button class="btn btn-danger" style="width: 100%;" onclick="bckitms()">取り消し</button><br><br>
+										</div>
+									<div id="dinone" style="display: none">	
+										<button class="btn btn-info" style="width: 100%;" onclick="newitms()">アイテムを追加する</button><br><br>
+										<div id="takaone">
+											<button class="btn btn-warning" style="width: 100%;" onclick="newlistsch()"type="button" data-toggle="modal" data-target="#newlistsch">新しいリスト</button>
+										</div>
 									</div>
-									<button class="selebtn" style="width: 100%;" onclick="newitms()">アイテムを追加する</button>
-								</div>
-								<script>
-									function newitms() {
-										var itmsstat = document.getElementById("itmsstat").innerHTML;
-										if(itmsstat == "0") {
-											document.getElementById("sodium").style.display = "none";
-											document.getElementById("carbonate").style.display = "block";
-											document.getElementById("itmsstat").innerHTML = "1";
-										} else {
-											document.getElementById("sodium").style.display = "block";
-											var cont = document.getElementById("newitmscont").value;
-											if(cont.length < 1) {
+									</div>
+									<script>
+										function newitms() {
+											var itmsstat = document.getElementById("itmsstat").innerHTML;
+											if(itmsstat == "0") {
+												document.getElementById("sodium").style.display = "none";
+												document.getElementById("takaone").style.display = "none";
+												document.getElementById("carbonate").style.display = "block";
+												document.getElementById("itmsstat").innerHTML = "1";
 											} else {
-												document.getElementById("tutitmsconted").innerHTML += '<th><input type="checkbox"></th><th><input type="checkbox"></th><th>'+ cont +'</th>';
-												document.getElementById("tutpref").style.display = "none";
+												document.getElementById("sodium").style.display = "block";
+												document.getElementById("takaone").style.display = "block";
+												var cont = document.getElementById("newitmscont").value;
+												if(cont.length < 1) {
+												} else {
+													document.getElementById("tutitmsconted").innerHTML += '<th><input type="checkbox"></th><th><input type="checkbox"></th><th>'+ cont +'</th>';
+													document.getElementById("tutpref").style.display = "none";
+												}
+													document.getElementById("carbonate").style.display = "none";
+													document.getElementById("itmsstat").innerHTML = "0";
 											}
-												document.getElementById("carbonate").style.display = "none";
-												document.getElementById("itmsstat").innerHTML = "0";
 										}
-									}
-								</script>
-								<hr><button class="btn btn-default" onclick="custbck()" style="width: 100%">戻る</button>
+										function bckitms() {
+											document.getElementById("sodium").style.display = "block";
+											document.getElementById("carbonate").style.display = "none";
+												document.getElementById("takaone").style.display = "block";
+											document.getElementById("itmsstat").innerHTML = "0";
+										}
+									</script>
+									<br>
+								</div>
+								<button class="btn btn-default" onclick="custbck()" style="width: 100%">もどる</button>
 							</div>
 							<div class="autocomplete-suggestions" style="position: absolute; width: 600px; top: 245px; left: 75px; max-height: 300px; z-index: 9999; display: none; z-index: 1000;"></div>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<span id="modfoot"></span>
-						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">とじる</button>
 					</div>
 				</div>
 			</div>
@@ -256,7 +283,7 @@
 					</div>
 					<div class="modal-footer">
 						<span id="modfoot"></span>
-						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">とじる</button>
 					</div>
 				</div>
 			</div>
@@ -273,7 +300,24 @@
 					</div>
 					<div class="modal-footer">
 						<span id="modfoot"></span>
-						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">とじる</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="newlistsch" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">セーブしますか？</h4>
+					</div>
+					<div class="modal-body">
+						<span style="font-size: 18px;">リストがセーブされていません。<br>セーブしますか？</span><br><br>
+						<div style="text-align: center;">
+							<button type="button" class="btn btn-default" style="width: 45%;" data-dismiss="modal">もどる</button>
+							<button type="button" class="btn btn-info" style="width: 45%;" data-dismiss="modal">セーブする</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -291,6 +335,8 @@
 			function minbt() {
 				var mids = document.getElementById("midstat").innerHTML;
 				document.getElementById("bubf").style.opacity = "0";
+				document.getElementById("menwrap").style.display = "block";
+				document.getElementById("menwrap").style.opacity = "1";
 				if( mids == "0") {
 					document.getElementById("middlebutton").style.borderWidth = "10px";
 					document.getElementById("middlebutton").style.borderRadius = "6px";
@@ -381,6 +427,8 @@
 					{ value: 'がっこう', data: 'school' },
 					{ value: '海水浴', data: 'ocean' },
 					{ value: 'かいすいよく', data: 'ocean' },
+					{ value: '海', data: 'ocean' },
+					{ value: 'うみ', data: 'ocean' },
 					{ value: '登山', data: 'mountain' },
 					{ value: 'とざん', data: 'mountain' },
 					{ value: '散歩', data: 'walk' },
@@ -395,3 +443,4 @@
 		</script>
 	</body>
 </html>
+
