@@ -201,12 +201,13 @@
 												<input type="text" placeholder="イベントを入力" name="currency" class="form-control" id="usr" autocomplete="off"><button class="btn btn-info" onclick="listformula()" style="width: 100%; margin-top: 5px;">決定</button>
 											</div>
 											<div id="eventwo" style="display: none;">
-												<button class="btn btn-warning">イベントを変更</button>
+												<button class="btn btn-warning">イベントを変える</button>
 											</div>
 											<script>
 												function listformula() {
 													document.getElementById("evenone").style.display = "none";
 													document.getElementById("beyonone").style.display = "inline";
+													document.getElementById("eventwo").style.display = "block";
 													document.getElementById("dinone").style.display = "inline";
 												}
 											</script>
@@ -245,12 +246,14 @@
 												document.getElementById("sodium").style.display = "none";
 												document.getElementById("takaone").style.display = "none";
 												document.getElementById("carbonate").style.display = "block";
+													document.getElementById("eventwo").style.display = "none";
 												document.getElementById("itmsstat").innerHTML = "1";
 											} else {
 												document.getElementById("sodium").style.display = "block";
 												document.getElementById("takaone").style.display = "block";
 												var cont = document.getElementById("newitmscont").value;
 												document.getElementById("newitmscont").value = "";
+													document.getElementById("eventwo").style.display = "block";
 												if(cont.length < 1) {
 												} else {
 													document.getElementById("tutitmsconted").innerHTML += '<th><input type="checkbox"></th><th><input type="checkbox"></th><th>'+ cont +'</th>';
@@ -264,6 +267,7 @@
 											document.getElementById("sodium").style.display = "block";
 											document.getElementById("carbonate").style.display = "none";
 											document.getElementById("takaone").style.display = "block";
+											document.getElementById("eventwo").style.display = "block";
 											document.getElementById("newitmscont").value = "";
 											document.getElementById("itmsstat").innerHTML = "0";
 										}
