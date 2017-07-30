@@ -201,7 +201,7 @@
 												<input type="text" placeholder="イベントを入力" name="currency" class="form-control" id="usr" autocomplete="off"><button class="btn btn-info" onclick="listformula()" style="width: 100%; margin-top: 5px;">決定</button>
 											</div>
 											<div id="eventwo" style="display: none;">
-												<button class="btn btn-warning">イベントを変える</button>
+												<button class="btn btn-warning" style="width: 45%;">イベントを変える</button><span id="modzcont" style="margin-left: 20px;"></span>
 											</div>
 											<script>
 												function listformula() {
@@ -209,6 +209,8 @@
 													document.getElementById("beyonone").style.display = "inline";
 													document.getElementById("eventwo").style.display = "block";
 													document.getElementById("dinone").style.display = "inline";
+													var modz = document.getElementById("usr").value;
+													document.getElementById("modzcont").innerHTML = "<strong>イベント：</strong>" + modz;
 												}
 											</script>
 										</div>
